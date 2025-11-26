@@ -12,7 +12,7 @@
     .card{max-width:640px;margin:0 auto;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px}
     h1{font-size:20px;margin:0 0 12px}
     label{display:block;font-size:14px;margin:12px 0 6px}
-    textarea,input{width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:14px}
+    textarea,input[type="text"]{width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:14px}
     button{margin-top:16px;background:#111;color:#fff;border:none;border-radius:8px;padding:10px 14px;font-size:14px}
     .notice{margin-top:12px;font-size:13px;color:#6b7280}
   </style>
@@ -21,14 +21,51 @@
  </head>
 <body>
   <div class="card">
-    <h1>Pré-anamnese</h1>
+    <h1>Budmed | Pré-anamnese</h1>
     <form id="form">
-      <label for="queixa">Queixa principal</label>
-      <textarea id="queixa" rows="3" required></textarea>
-      <label for="historico">Histórico relevante</label>
-      <textarea id="historico" rows="3" required></textarea>
-      <label for="alergias">Alergias</label>
-      <input id="alergias" type="text" required />
+      <label>O que te trouxe até nós hoje? Qual o seu principal objetivo? (Marque as opções que mais se aplicam. Você pode selecionar mais de uma.)</label>
+      <label>Gerenciamento da dor</label>
+      <label><input type="checkbox" name="objetivos_dor" value="Dor Crônica (dores no corpo, articulações, musculares, fibromialgia, etc.)"> Dor Crônica (dores no corpo, articulações, musculares, fibromialgia, etc.)</label>
+      <label><input type="checkbox" name="objetivos_dor" value="Dor Neuropática (neuralgia, ciática, etc.)"> Dor Neuropática (neuralgia, ciática, etc.)</label>
+      <label><input type="checkbox" name="objetivos_dor" value="Dor Orofacial (face, mandíbula, ATM)"> Dor Orofacial (face, mandíbula, ATM)</label>
+      <label><input type="checkbox" name="objetivos_dor" value="Dor de Cabeça / Enxaqueca"> Dor de Cabeça / Enxaqueca</label>
+      <label><input type="checkbox" name="objetivos_dor" value="Dores relacionadas a alguma condição específica (câncer, lesão, etc.)"> Dores relacionadas a alguma condição específica (câncer, lesão, etc.)</label>
+      <label><input type="checkbox" name="objetivos_dor" value="Não se aplica"> Não se aplica</label>
+
+      <label>Melhora do Sono</label>
+      <label><input type="checkbox" name="objetivos_sono" value="Dificuldade para iniciar o sono (insônia inicial)"> Dificuldade para iniciar o sono (insônia inicial)</label>
+      <label><input type="checkbox" name="objetivos_sono" value="Despertares noturnos frequentes"> Despertares noturnos frequentes</label>
+      <label><input type="checkbox" name="objetivos_sono" value="Sono não reparador / Acordo cansado(a)"> Sono não reparador / Acordo cansado(a)</label>
+      <label><input type="checkbox" name="objetivos_sono" value="Outros distúrbios do sono (apneia, ronco)"> Outros distúrbios do sono (apneia, ronco)</label>
+      <label><input type="checkbox" name="objetivos_sono" value="Não se aplica"> Não se aplica</label>
+
+      <label>Saúde Mental e Emocional</label>
+      <label><input type="checkbox" name="objetivos_mental" value="Ansiedade / Estresse excessivo"> Ansiedade / Estresse excessivo</label>
+      <label><input type="checkbox" name="objetivos_mental" value="Sintomas de Depressão / Tristeza persistente"> Sintomas de Depressão / Tristeza persistente</label>
+      <label><input type="checkbox" name="objetivos_mental" value="Irritabilidade / Oscilações de humor"> Irritabilidade / Oscilações de humor</label>
+      <label><input type="checkbox" name="objetivos_mental" value="Dificuldade de concentração / Foco"> Dificuldade de concentração / Foco</label>
+      <label><input type="checkbox" name="objetivos_mental" value="Síndrome de Burnout / Esgotamento"> Síndrome de Burnout / Esgotamento</label>
+      <label><input type="checkbox" name="objetivos_mental" value="Não se aplica"> Não se aplica</label>
+
+      <label>Conforto Gastrointestinal</label>
+      <label><input type="checkbox" name="objetivos_gastro" value="Náuseas / Vômitos"> Náuseas / Vômitos</label>
+      <label><input type="checkbox" name="objetivos_gastro" value="Doenças Inflamatórias Intestinais (DII) / Síndrome do Intestino Irritável (SII)"> Doenças Inflamatórias Intestinais (DII) / Síndrome do Intestino Irritável (SII)</label>
+      <label><input type="checkbox" name="objetivos_gastro" value="Irritabilidade / Oscilações de humor"> Irritabilidade / Oscilações de humor</label>
+      <label><input type="checkbox" name="objetivos_gastro" value="Melhora do apetite"> Melhora do apetite</label>
+      <label><input type="checkbox" name="objetivos_gastro" value="Não se aplica"> Não se aplica</label>
+
+      <label>Condições Neurológicas</label>
+      <label><input type="checkbox" name="objetivos_neuro" value="Epilepsia / Convulsões"> Epilepsia / Convulsões</label>
+      <label><input type="checkbox" name="objetivos_neuro" value="Tremores / Parkinson"> Tremores / Parkinson</label>
+      <label><input type="checkbox" name="objetivos_neuro" value="Esclerose Múltipla"> Esclerose Múltipla</label>
+      <label><input type="checkbox" name="objetivos_neuro" value="Não se aplica"> Não se aplica</label>
+
+      <label>Outros Objetivos de Saúde</label>
+      <label><input type="checkbox" name="objetivos_outros" value="Condição de pele (acne, psoríase, dermatite)"> Condição de pele (acne, psoríase, dermatite)</label>
+      <label><input type="checkbox" name="objetivos_outros" value="Melhora da qualidade de vida geral"> Melhora da qualidade de vida geral</label>
+      <label><input type="checkbox" name="objetivos_outros" value="Prevenção de doenças"> Prevenção de doenças</label>
+      <label><input type="checkbox" name="objetivos_outros" value="Redução da necessidade de outros medicamentos"> Redução da necessidade de outros medicamentos</label>
+      <label><input type="checkbox" name="objetivos_outros" value="Não se aplica"> Não se aplica</label>
       <button type="submit">Enviar</button>
       <div class="notice" id="status"></div>
     </form>
