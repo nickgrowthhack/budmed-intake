@@ -15,77 +15,242 @@
   <div class="card">
     <h1>Budmed | Pré-anamnese</h1>
     <form id="form">
-      <section class="intro">
-        <p>Seu bem-estar é muito importante para nós. 💚</p>
-        <p>É uma alegria ter você na BudMed. 🌿</p>
-        <p>Nossa missão é ajudar você a encontrar o caminho mais adequado para seu bem-estar e qualidade de vida.</p>
-        <p>Complete suas informações para melhor aproveitamento da sua consulta.</p>
+      <section class="step" data-step="1" aria-current="step">
+        <section class="intro">
+          <p>Seu bem-estar é muito importante para nós. 💚</p>
+          <p>É uma alegria ter você na BudMed. 🌿</p>
+          <p>Nossa missão é ajudar você a encontrar o caminho mais adequado para seu bem-estar e qualidade de vida.</p>
+          <p>Complete suas informações para melhor aproveitamento da sua consulta.</p>
+        </section>
+        <section class="section">
+          <label for="queixa">Queixa principal</label>
+          <span id="queixa_help" class="notice">Descreva em poucas palavras o motivo da consulta.</span>
+          <textarea id="queixa" name="queixa" rows="4" aria-describedby="queixa_help"></textarea>
+        </section>
+        <section class="section">
+          <label for="historico">Histórico relevante</label>
+          <span id="historico_help" class="notice">Inclua tratamentos, diagnósticos e tempo dos sintomas.</span>
+          <textarea id="historico" name="historico" rows="4" aria-describedby="historico_help"></textarea>
+        </section>
+        <section class="section">
+          <label for="alergias">Alergias</label>
+          <span id="alergias_help" class="notice">Liste alergias a medicamentos ou substâncias.</span>
+          <textarea id="alergias" name="alergias" rows="3" aria-describedby="alergias_help"></textarea>
+        </section>
+        <section class="section">
+          <label class="question">O que te trouxe até nós hoje? Qual o seu principal objetivo? Você pode selecionar mais de uma opção.</label>
+          <fieldset>
+            <legend>Gerenciamento da dor</legend>
+            <div class="options">
+              <label class="option"><input type="checkbox" name="objetivos_dor" value="Dor Crônica (dores no corpo, articulações, musculares, fibromialgia, etc.)"> Dor Crônica (dores no corpo, articulações, musculares, fibromialgia, etc.)</label>
+              <label class="option"><input type="checkbox" name="objetivos_dor" value="Dor Neuropática (neuralgia, ciática, etc.)"> Dor Neuropática (neuralgia, ciática, etc.)</label>
+              <label class="option"><input type="checkbox" name="objetivos_dor" value="Dor Orofacial (face, mandíbula, ATM)"> Dor Orofacial (face, mandíbula, ATM)</label>
+              <label class="option"><input type="checkbox" name="objetivos_dor" value="Dor de Cabeça / Enxaqueca"> Dor de Cabeça / Enxaqueca</label>
+              <label class="option"><input type="checkbox" name="objetivos_dor" value="Dores relacionadas a alguma condição específica (câncer, lesão, etc.)"> Dores relacionadas a alguma condição específica (câncer, lesão, etc.)</label>
+              <label class="option"><input type="checkbox" name="objetivos_dor" value="Não se aplica"> Não se aplica</label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Melhora do sono</legend>
+            <div class="options">
+              <label class="option"><input type="checkbox" name="objetivos_sono" value="Dificuldade para iniciar o sono (insônia inicial)"> Dificuldade para iniciar o sono (insônia inicial)</label>
+              <label class="option"><input type="checkbox" name="objetivos_sono" value="Despertares noturnos frequentes"> Despertares noturnos frequentes</label>
+              <label class="option"><input type="checkbox" name="objetivos_sono" value="Sono não reparador / Acordo cansado(a)"> Sono não reparador / Acordo cansado(a)</label>
+              <label class="option"><input type="checkbox" name="objetivos_sono" value="Outros distúrbios do sono (apneia, ronco)"> Outros distúrbios do sono (apneia, ronco)</label>
+              <label class="option"><input type="checkbox" name="objetivos_sono" value="Não se aplica"> Não se aplica</label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Saúde mental e emocional</legend>
+            <div class="options">
+              <label class="option"><input type="checkbox" name="objetivos_mental" value="Ansiedade / Estresse excessivo"> Ansiedade / Estresse excessivo</label>
+              <label class="option"><input type="checkbox" name="objetivos_mental" value="Sintomas de Depressão / Tristeza persistente"> Sintomas de Depressão / Tristeza persistente</label>
+              <label class="option"><input type="checkbox" name="objetivos_mental" value="Irritabilidade / Oscilações de humor"> Irritabilidade / Oscilações de humor</label>
+              <label class="option"><input type="checkbox" name="objetivos_mental" value="Dificuldade de concentração / Foco"> Dificuldade de concentração / Foco</label>
+              <label class="option"><input type="checkbox" name="objetivos_mental" value="Síndrome de Burnout / Esgotamento"> Síndrome de Burnout / Esgotamento</label>
+              <label class="option"><input type="checkbox" name="objetivos_mental" value="Não se aplica"> Não se aplica</label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Conforto gastrointestinal</legend>
+            <div class="options">
+              <label class="option"><input type="checkbox" name="objetivos_gastro" value="Náuseas / Vômitos"> Náuseas / Vômitos</label>
+              <label class="option"><input type="checkbox" name="objetivos_gastro" value="Doenças Inflamatórias Intestinais (DII) / Síndrome do Intestino Irritável (SII)"> Doenças Inflamatórias Intestinais (DII) / Síndrome do Intestino Irritável (SII)</label>
+              <label class="option"><input type="checkbox" name="objetivos_gastro" value="Irritabilidade / Oscilações de humor"> Irritabilidade / Oscilações de humor</label>
+              <label class="option"><input type="checkbox" name="objetivos_gastro" value="Melhora do apetite"> Melhora do apetite</label>
+              <label class="option"><input type="checkbox" name="objetivos_gastro" value="Não se aplica"> Não se aplica</label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Condições neurológicas</legend>
+            <div class="options">
+              <label class="option"><input type="checkbox" name="objetivos_neuro" value="Epilepsia / Convulsões"> Epilepsia / Convulsões</label>
+              <label class="option"><input type="checkbox" name="objetivos_neuro" value="Tremores / Parkinson"> Tremores / Parkinson</label>
+              <label class="option"><input type="checkbox" name="objetivos_neuro" value="Esclerose Múltipla"> Esclerose Múltipla</label>
+              <label class="option"><input type="checkbox" name="objetivos_neuro" value="Não se aplica"> Não se aplica</label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Outros objetivos de saúde</legend>
+            <div class="options">
+              <label class="option"><input type="checkbox" name="objetivos_outros" value="Condição de pele (acne, psoríase, dermatite)"> Condição de pele (acne, psoríase, dermatite)</label>
+              <label class="option"><input type="checkbox" name="objetivos_outros" value="Melhora da qualidade de vida geral"> Melhora da qualidade de vida geral</label>
+              <label class="option"><input type="checkbox" name="objetivos_outros" value="Prevenção de doenças"> Prevenção de doenças</label>
+              <label class="option"><input type="checkbox" name="objetivos_outros" value="Redução da necessidade de outros medicamentos"> Redução da necessidade de outros medicamentos</label>
+              <label class="option"><input type="checkbox" name="objetivos_outros" value="Não se aplica"> Não se aplica</label>
+            </div>
+          </fieldset>
+        </section>
+        <div class="step-nav"><button type="button" id="next">Avançar</button></div>
       </section>
-      <section class="section">
-        <label class="question">O que te trouxe até nós hoje? Qual o seu principal objetivo? Você pode selecionar mais de uma opção.</label>
-        <fieldset>
-          <legend>Gerenciamento da dor</legend>
-          <div class="options">
-            <label class="option"><input type="checkbox" name="objetivos_dor" value="Dor Crônica (dores no corpo, articulações, musculares, fibromialgia, etc.)"> Dor Crônica (dores no corpo, articulações, musculares, fibromialgia, etc.)</label>
-            <label class="option"><input type="checkbox" name="objetivos_dor" value="Dor Neuropática (neuralgia, ciática, etc.)"> Dor Neuropática (neuralgia, ciática, etc.)</label>
-            <label class="option"><input type="checkbox" name="objetivos_dor" value="Dor Orofacial (face, mandíbula, ATM)"> Dor Orofacial (face, mandíbula, ATM)</label>
-            <label class="option"><input type="checkbox" name="objetivos_dor" value="Dor de Cabeça / Enxaqueca"> Dor de Cabeça / Enxaqueca</label>
-            <label class="option"><input type="checkbox" name="objetivos_dor" value="Dores relacionadas a alguma condição específica (câncer, lesão, etc.)"> Dores relacionadas a alguma condição específica (câncer, lesão, etc.)</label>
-            <label class="option"><input type="checkbox" name="objetivos_dor" value="Não se aplica"> Não se aplica</label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Melhora do sono</legend>
-          <div class="options">
-            <label class="option"><input type="checkbox" name="objetivos_sono" value="Dificuldade para iniciar o sono (insônia inicial)"> Dificuldade para iniciar o sono (insônia inicial)</label>
-            <label class="option"><input type="checkbox" name="objetivos_sono" value="Despertares noturnos frequentes"> Despertares noturnos frequentes</label>
-            <label class="option"><input type="checkbox" name="objetivos_sono" value="Sono não reparador / Acordo cansado(a)"> Sono não reparador / Acordo cansado(a)</label>
-            <label class="option"><input type="checkbox" name="objetivos_sono" value="Outros distúrbios do sono (apneia, ronco)"> Outros distúrbios do sono (apneia, ronco)</label>
-            <label class="option"><input type="checkbox" name="objetivos_sono" value="Não se aplica"> Não se aplica</label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Saúde mental e emocional</legend>
-          <div class="options">
-            <label class="option"><input type="checkbox" name="objetivos_mental" value="Ansiedade / Estresse excessivo"> Ansiedade / Estresse excessivo</label>
-            <label class="option"><input type="checkbox" name="objetivos_mental" value="Sintomas de Depressão / Tristeza persistente"> Sintomas de Depressão / Tristeza persistente</label>
-            <label class="option"><input type="checkbox" name="objetivos_mental" value="Irritabilidade / Oscilações de humor"> Irritabilidade / Oscilações de humor</label>
-            <label class="option"><input type="checkbox" name="objetivos_mental" value="Dificuldade de concentração / Foco"> Dificuldade de concentração / Foco</label>
-            <label class="option"><input type="checkbox" name="objetivos_mental" value="Síndrome de Burnout / Esgotamento"> Síndrome de Burnout / Esgotamento</label>
-            <label class="option"><input type="checkbox" name="objetivos_mental" value="Não se aplica"> Não se aplica</label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Conforto gastrointestinal</legend>
-          <div class="options">
-            <label class="option"><input type="checkbox" name="objetivos_gastro" value="Náuseas / Vômitos"> Náuseas / Vômitos</label>
-            <label class="option"><input type="checkbox" name="objetivos_gastro" value="Doenças Inflamatórias Intestinais (DII) / Síndrome do Intestino Irritável (SII)"> Doenças Inflamatórias Intestinais (DII) / Síndrome do Intestino Irritável (SII)</label>
-            <label class="option"><input type="checkbox" name="objetivos_gastro" value="Irritabilidade / Oscilações de humor"> Irritabilidade / Oscilações de humor</label>
-            <label class="option"><input type="checkbox" name="objetivos_gastro" value="Melhora do apetite"> Melhora do apetite</label>
-            <label class="option"><input type="checkbox" name="objetivos_gastro" value="Não se aplica"> Não se aplica</label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Condições neurológicas</legend>
-          <div class="options">
-            <label class="option"><input type="checkbox" name="objetivos_neuro" value="Epilepsia / Convulsões"> Epilepsia / Convulsões</label>
-            <label class="option"><input type="checkbox" name="objetivos_neuro" value="Tremores / Parkinson"> Tremores / Parkinson</label>
-            <label class="option"><input type="checkbox" name="objetivos_neuro" value="Esclerose Múltipla"> Esclerose Múltipla</label>
-            <label class="option"><input type="checkbox" name="objetivos_neuro" value="Não se aplica"> Não se aplica</label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Outros objetivos de saúde</legend>
-          <div class="options">
-            <label class="option"><input type="checkbox" name="objetivos_outros" value="Condição de pele (acne, psoríase, dermatite)"> Condição de pele (acne, psoríase, dermatite)</label>
-            <label class="option"><input type="checkbox" name="objetivos_outros" value="Melhora da qualidade de vida geral"> Melhora da qualidade de vida geral</label>
-            <label class="option"><input type="checkbox" name="objetivos_outros" value="Prevenção de doenças"> Prevenção de doenças</label>
-            <label class="option"><input type="checkbox" name="objetivos_outros" value="Redução da necessidade de outros medicamentos"> Redução da necessidade de outros medicamentos</label>
-            <label class="option"><input type="checkbox" name="objetivos_outros" value="Não se aplica"> Não se aplica</label>
-          </div>
-        </fieldset>
+      <section class="step hidden" data-step="2">
+        <section class="section">
+          <label class="question">Sua Saúde Mental e Emocional</label>
+          <span class="notice">Entender seu estado emocional é fundamental para um tratamento integrado e empático.</span>
+        </section>
+        <section class="section">
+          <fieldset>
+            <legend>Nas últimas duas semanas, com que frequência você se sentiu incomodado(a) por estar nervoso(a), ansioso(a) ou muito tenso(a)?</legend>
+            <div class="options">
+              <label class="option"><input type="radio" name="ansiedade_freq" value="Nenhuma vez"> Nenhuma vez</label>
+              <label class="option"><input type="radio" name="ansiedade_freq" value="Alguns dias"> Alguns dias</label>
+              <label class="option"><input type="radio" name="ansiedade_freq" value="Mais da metade dos dias"> Mais da metade dos dias</label>
+              <label class="option"><input type="radio" name="ansiedade_freq" value="Quase todos os dias"> Quase todos os dias</label>
+            </div>
+          </fieldset>
+        </section>
+        <section class="section">
+          <fieldset>
+            <legend>Nas últimas duas semanas, com que frequência você sentiu pouco interesse ou prazer em fazer as coisas?</legend>
+            <div class="options">
+              <label class="option"><input type="radio" name="anedonia_freq" value="Nenhuma vez"> Nenhuma vez</label>
+              <label class="option"><input type="radio" name="anedonia_freq" value="Alguns dias"> Alguns dias</label>
+              <label class="option"><input type="radio" name="anedonia_freq" value="Mais da metade dos dias"> Mais da metade dos dias</label>
+              <label class="option"><input type="radio" name="anedonia_freq" value="Quase todos os dias"> Quase todos os dias</label>
+            </div>
+          </fieldset>
+        </section>
+        <section class="section">
+          <fieldset>
+            <legend>Você já teve diagnóstico ou tratamento para alguma condição psiquiátrica séria (ex: transtorno bipolar, esquizofrenia, histórico de psicoses)?</legend>
+            <div class="options">
+              <label class="option"><input type="radio" name="diagnostico_psiquiatrico" value="Não"> Não</label>
+              <label class="option"><input type="radio" name="diagnostico_psiquiatrico" value="Não tenho certeza"> Não tenho certeza</label>
+              <label class="option"><input type="radio" name="diagnostico_psiquiatrico" value="Outro"> Outro (escreva)</label>
+            </div>
+            <label for="diagnostico_psiquiatrico_outro" class="notice">Se escolheu "Outro", descreva:</label>
+            <input type="text" id="diagnostico_psiquiatrico_outro" name="diagnostico_psiquiatrico_outro" style="display:none" />
+          </fieldset>
+        </section>
+        <div class="step-nav"><button type="button" id="back">Voltar</button><button type="button" id="next">Avançar</button></div>
       </section>
-      <button type="submit">Enviar</button>
+      <section class="step hidden" data-step="3">
+        <section class="section">
+          <label class="question">Seu Sono e Disposição</label>
+          <span class="notice">O sono é um pilar importante da saúde e um indicador de bem-estar geral.</span>
+        </section>
+        <section class="section">
+          <fieldset>
+            <legend>Geralmente, quanto tempo leva para você adormecer depois de se deitar?</legend>
+            <div class="options">
+              <label class="option"><input type="radio" name="tempo_adormecer" value="Menos de 15 minutos"> Menos de 15 minutos</label>
+              <label class="option"><input type="radio" name="tempo_adormecer" value="15-30 minutos"> 15-30 minutos</label>
+              <label class="option"><input type="radio" name="tempo_adormecer" value="30-60 minutos"> 30-60 minutos</label>
+              <label class="option"><input type="radio" name="tempo_adormecer" value="Mais de 60 minutos"> Mais de 60 minutos</label>
+            </div>
+          </fieldset>
+        </section>
+        <section class="section">
+          <fieldset>
+            <legend>Como você avalia a qualidade geral do seu sono nas últimas duas semanas?</legend>
+            <div class="options">
+              <label class="option"><input type="radio" name="qualidade_sono" value="Muito boa"> Muito boa</label>
+              <label class="option"><input type="radio" name="qualidade_sono" value="Boa"> Boa</label>
+              <label class="option"><input type="radio" name="qualidade_sono" value="Razoável"> Razoável</label>
+              <label class="option"><input type="radio" name="qualidade_sono" value="Ruim"> Ruim</label>
+              <label class="option"><input type="radio" name="qualidade_sono" value="Muito ruim"> Muito ruim</label>
+            </div>
+          </fieldset>
+        </section>
+        <section class="section">
+          <fieldset>
+            <legend>Considerando seu padrão de sono, você gostaria de buscar melhorias na qualidade ou duração do seu sono?</legend>
+            <div class="options">
+              <label class="option"><input type="radio" name="melhorar_sono" value="Sim, gostaria muito de melhorar meu sono."> Sim, gostaria muito de melhorar meu sono.</label>
+              <label class="option"><input type="radio" name="melhorar_sono" value="Sim, considero importante, mas não é uma prioridade agora."> Sim, considero importante, mas não é uma prioridade agora.</label>
+              <label class="option"><input type="radio" name="melhorar_sono" value="Não, estou satisfeito (a) com meu sono."> Não, estou satisfeito (a) com meu sono.</label>
+            </div>
+          </fieldset>
+        </section>
+        <div class="step-nav"><button type="button" id="back">Voltar</button><button type="button" id="next">Avançar</button></div>
+      </section>
+      <section class="step hidden" data-step="4">
+        <section class="section">
+          <label class="question">Seu Histórico de Saúde Geral e Medicamentos</label>
+          <span class="notice">Para sua segurança e para um tratamento ainda mais eficaz, precisamos conhecer um pouco sobre sua saúde.</span>
+        </section>
+        <section class="section">
+          <fieldset>
+            <legend>Você utiliza algum medicamento atualmente (prescritos ou de venda livre, contínuos ou eventuais)? (Se sim, especifique.)</legend>
+            <div class="options">
+              <label class="option"><input type="radio" name="medicamentos_uso" value="Sim"> Sim</label>
+              <label class="option"><input type="radio" name="medicamentos_uso" value="Não"> Não</label>
+            </div>
+            <label for="medicamentos_quais" class="notice">Se escolheu "Sim", especifique:</label>
+            <input type="text" id="medicamentos_quais" name="medicamentos_quais" style="display:none" />
+          </fieldset>
+        </section>
+        <section class="section">
+          <fieldset>
+            <legend>Você possui alguma destas condições de saúde ou já teve alguma cirurgia importante?</legend>
+            <div class="options">
+              <label class="option"><input type="checkbox" name="condicoes_saude" value="Problemas renais"> Problemas renais</label>
+              <label class="option"><input type="checkbox" name="condicoes_saude" value="Problemas hepáticos"> Problemas hepáticos</label>
+              <label class="option"><input type="checkbox" name="condicoes_saude" value="Problemas cardíacos (hipertensão, arritmia, histórico de infarto/AVC, etc.)"> Problemas cardíacos (hipertensão, arritmia, histórico de infarto/AVC, etc.)</label>
+              <label class="option"><input type="checkbox" name="condicoes_saude" value="Diabetes (tipo 1 ou 2)"> Diabetes (tipo 1 ou 2)</label>
+              <label class="option"><input type="checkbox" name="condicoes_saude" value="Doenças autoimunes (lúpus, tireoidite de Hashimoto, artrite reumatoide, etc.)"> Doenças autoimunes (lúpus, tireoidite de Hashimoto, artrite reumatoide, etc.)</label>
+              <label class="option"><input type="checkbox" name="condicoes_saude" value="Problemas respiratórios graves (asma severa, DPOC)"> Problemas respiratórios graves (asma severa, DPOC)</label>
+              <label class="option"><input type="checkbox" name="condicoes_saude" value="Histórico de alergias a medicamentos"> Histórico de alergias a medicamentos</label>
+              <label class="option"><input type="checkbox" name="condicoes_saude" value="Histórico de câncer ou tratamento para câncer"> Histórico de câncer ou tratamento para câncer</label>
+              <label class="option"><input type="checkbox" name="condicoes_saude" value="Cirurgia importante nos últimos 6 meses"> Cirurgia importante nos últimos 6 meses</label>
+              <label class="option"><input type="checkbox" name="condicoes_saude" value="Não se aplica"> Não se aplica</label>
+              <label class="option"><input type="checkbox" name="condicoes_saude" value="Outro (especifique)"> Outro (especifique)</label>
+            </div>
+            <label for="condicoes_saude_outro" class="notice">Se escolheu "Outro", descreva:</label>
+            <input type="text" id="condicoes_saude_outro" name="condicoes_saude_outro" style="display:none" />
+          </fieldset>
+        </section>
+        <section class="section">
+          <label for="exames_lab">Quando foi a última vez que realizou exames laboratoriais de rotina e qual foi o resultado geral?</label>
+          <textarea id="exames_lab" name="exames_lab" rows="3"></textarea>
+        </section>
+        <div class="step-nav"><button type="button" id="back">Voltar</button><button type="button" id="next">Avançar</button></div>
+      </section>
+      <section class="step hidden" data-step="5">
+        <section class="section">
+          <label class="question">Sua Experiência com Cannabis</label>
+          <span class="notice">É importante para nós entender sua relação com a Cannabis, seja para uso terapêutico ou recreativo.</span>
+        </section>
+        <section class="section">
+          <fieldset>
+            <legend>Qual a sua experiência com a Cannabis ou produtos derivados?</legend>
+            <div class="options">
+              <label class="option"><input type="radio" name="experiencia_cannabis" value="Nunca usei, mas tenho interesse no uso terapêutico."> Nunca usei, mas tenho interesse no uso terapêutico.</label>
+              <label class="option"><input type="radio" name="experiencia_cannabis" value="Já usei apenas produtos com CBD (Canabidiol) para fins terapêuticos."> Já usei apenas produtos com CBD (Canabidiol) para fins terapêuticos.</label>
+              <label class="option"><input type="radio" name="experiencia_cannabis" value="Já usei produtos com THC (Tetra-hidrocanabinol) para fins terapêuticos."> Já usei produtos com THC (Tetra-hidrocanabinol) para fins terapêuticos.</label>
+              <label class="option"><input type="radio" name="experiencia_cannabis" value="Já usei produtos com CBD e THC (espectro completo) para fins terapêuticos."> Já usei produtos com CBD e THC (espectro completo) para fins terapêuticos.</label>
+              <label class="option"><input type="radio" name="experiencia_cannabis" value="Já usei Cannabis para fins recreativos."> Já usei Cannabis para fins recreativos.</label>
+              <label class="option"><input type="radio" name="experiencia_cannabis" value="Já usei para fins terapêuticos e recreativos."> Já usei para fins terapêuticos e recreativos.</label>
+              <label class="option"><input type="radio" name="experiencia_cannabis" value="Não tenho certeza do que usei."> Não tenho certeza do que usei.</label>
+            </div>
+          </fieldset>
+        </section>
+        <section class="section">
+          <label for="experiencia_cannabis_detalhes" class="notice">Se sua resposta anterior for "já usei": conte sobre sua experiência (produtos, frequência, quantidade, efeitos, prescrição).</label>
+          <textarea id="experiencia_cannabis_detalhes" name="experiencia_cannabis_detalhes" rows="4" style="display:none"></textarea>
+        </section>
+        <div class="step-nav"><button type="button" id="back">Voltar</button><button type="submit">Enviar</button></div>
+      </section>
       <div class="notice" id="status" role="status" aria-live="polite"></div>
     </form>
   </div>
