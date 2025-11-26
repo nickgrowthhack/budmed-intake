@@ -10,6 +10,12 @@ document.addEventListener('change',e=>{if(e.target&&e.target.name==='medicamento
 document.addEventListener('change',e=>{if(e.target&&e.target.name==='condicoes_saude'){const outroOpt=Array.from(document.querySelectorAll('input[name="condicoes_saude"]')).some(i=>i.value==='Outro (especifique)'&&i.checked);const outro=document.getElementById('condicoes_saude_outro');if(outroOpt){outro.style.display='block'}else{outro.style.display='none';outro.value=''}}})
 document.addEventListener('change',e=>{if(e.target&&e.target.name==='experiencia_cannabis'){const v=e.target.value;const d=document.getElementById('experiencia_cannabis_detalhes');if(v.startsWith('Já usei')){d.style.display='block'}else{d.style.display='none';d.value=''}}})
 document.addEventListener('change',e=>{if(e.target&&e.target.name==='alimentacao'){const o=document.getElementById('alimentacao_outro');if(e.target.value==='Outro (especifique)'){o.style.display='block'}else{o.style.display='none';o.value=''}}})
+document.addEventListener('input',e=>{const t=e.target;if(t&&(t.matches('input[type=text]')||t.matches('textarea'))){if(t.value.trim()){t.classList.remove('invalid');const fs=t.closest('fieldset');if(fs)fs.classList.remove('invalid')}}})
+document.addEventListener('change',e=>{const t=e.target;if(t&&t.matches('input[type=radio]')){const fs=t.closest('fieldset');if(fs)fs.classList.remove('invalid')}})
+document.addEventListener('change',e=>{const t=e.target;if(t&&t.matches('input[type=checkbox]')){const fs=t.closest('fieldset');if(fs&&fs.querySelectorAll('input[type=checkbox]:checked').length>0){fs.classList.remove('invalid')}}})
+function clearStatus(){statusEl.textContent='';statusEl.classList.remove('error');statusEl.classList.remove('success')}
+document.addEventListener('input',clearStatus)
+document.addEventListener('change',clearStatus)
 showStep(1)
 function getToken(){const u=new URL(window.location.href);return u.searchParams.get('token')||''}
 function getChecked(n){return Array.from(document.querySelectorAll(`input[name="${n}"]:checked`)).map(i=>i.value)}
