@@ -1,0 +1,25 @@
+:root{--space-2:8px;--space-3:12px;--space-4:16px;--radius-2:8px;--radius-3:12px;--color-bg:#f7f7f8;--color-fg:#111;--color-border:#e5e7eb;--color-input:#d1d5db;--color-muted:#6b7280;--color-primary:#111;--color-error:#b91c1c;--color-success:#166534}
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:24px;background:var(--color-bg);color:var(--color-fg)}
+.card{max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--color-border);border-radius:var(--radius-3);padding:24px}
+h1{font-size:20px;line-height:1.2;margin:0 0 var(--space-3)}
+.section{margin-top:var(--space-4)}
+.intro{margin-top:var(--space-4);margin-bottom:var(--space-4);font-size:14px;line-height:1.6;color:var(--color-fg)}
+.intro p{margin:0 0 var(--space-2)}
+label{display:block;font-size:14px;margin:var(--space-3) 0 var(--space-2)}
+textarea,input[type=text]{width:100%;padding:10px;border:1px solid var(--color-input);border-radius:var(--radius-2);font-size:14px;background:#fff;color:var(--color-fg)}
+textarea:focus-visible,input[type=text]:focus-visible{outline:2px solid #2563eb;outline-offset:2px}
+button{margin-top:var(--space-4);background:var(--color-primary);color:#fff;border:none;border-radius:var(--radius-2);padding:10px 14px;font-size:14px}
+button:hover{opacity:.95}
+button:focus-visible{outline:2px solid #2563eb;outline-offset:2px}
+.notice{margin-top:var(--space-3);font-size:13px;color:var(--color-muted)}
+.question{font-size:16px;font-weight:600;margin-bottom:var(--space-3)}
+fieldset{border:1px solid var(--color-border);border-radius:var(--radius-2);padding:var(--space-3);margin-top:var(--space-3)}
+legend{font-weight:600;font-size:14px;padding:0 var(--space-2)}
+.options{display:grid;grid-template-columns:1fr;gap:var(--space-2);margin-top:var(--space-2)}
+@media (min-width:768px){.options{grid-template-columns:1fr 1fr}}
+.option{display:flex;align-items:flex-start;gap:8px;padding:8px;border:1px solid var(--color-border);border-radius:var(--radius-2)}
+.option input{margin-top:2px}
+.option:has(input:focus-visible){outline:2px solid #2563eb;outline-offset:2px}
+.error{color:var(--color-error)}
+.success{color:var(--color-success)}
