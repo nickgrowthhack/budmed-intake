@@ -53,7 +53,7 @@ Esse link é específico para cada consulta realizada dentro da BudMed, e uma ve
  
  ### Endpoints
 
- - **POST /appointments/{appointmentId}/intake-link**
+- **POST /appointments/{appointmentId}/intake-link**
 
 Exemplo de resposta:
 ```
@@ -64,13 +64,35 @@ Exemplo de resposta:
 }
 ```
 
- - **GET /appointments/{appointmentId}/intake-response**
+- **POST /intake/{token}/response** ("O paciente está enviando as respostas da pré-anamnese usando este token.")
+Exemplo de requisição:
+```
+{
+  "answers": {
+    "queixa_principal": "Insônia há 3 semanas.",
+    "historico_relevante": "Ansiedade há 1 ano, em uso de escitalopram.",
+    "alergias": "Nenhuma, eu acho."
+  }
+}
+```
+
+Exemplo de resposta:
+```
+{
+  "status": "received",
+  "appointment_id": "123",
+  "token": "123",
+  "submitted_at": "2025-11-26T12:00:00Z"
+}
+```
+
+- **GET /appointments/{appointmentId}/intake-response**
 
 Exemplo de resposta:
 ```
 {
   "appointment_id": "123",
-  "answers": {}, // JSON da pré-anamnese
-  "submitted_at": "2023-08-10T12:00:00Z"
+  "answers": null, // JSON da pré-anamnese
+  "submitted_at": null
 }
 ```
