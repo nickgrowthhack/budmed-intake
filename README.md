@@ -4,6 +4,14 @@ BudMed Intake é um microprojeto independente responsável por gerenciar o formu
 
 O BudMed Intake permite que toda a preparação clínica da consulta seja feita antes do atendimento, agilizando diagnósticos, melhorando a qualidade do atendimento médico e reduzindo retrabalho no momento da consulta.
 
+De maneira prática, cada consulta pode gerar um link único como este:
+
+```
+https://intake.budmed.com.br/patient/?token=123
+```
+
+Esse link é específico para cada consulta realizada dentro da BudMed, e uma vez respondido, as respostas não podem ser alteradas e nem visualizadas por qualquer outro usuário que acesse o link que não seja o próprio médico.
+
 ---
 
 ## 🎯 Escopo do microprojeto
@@ -28,7 +36,46 @@ O BudMed Intake permite que toda a preparação clínica da consulta seja feita 
 
 ## 🧱 Arquitetura
 
-- Front end: Next.js
-- Back end: Supabase (PostgreSQL + Row Level Security)
+- Front-end: Next.js
+- Back-end: Supabase (PostgreSQL + Row Level Security)
 
-##
+---
+
+## Tabelas & Endpoints
+
+### Tabelas
+
+- intake_links ("Este link pertence a esta consulta.")
+  - id
+  - appointment_id
+  - token
+  - created_at
+
+- intake_responses ("Aqui estão as respostas da pré-anamnese para esta consulta.")
+  - id
+  - appointment_id
+  - token
+  - answers
+  - submitted_at
+ 
+ ### Endpoints
+
+ - POST /appointments/{appointmentId}/intake-link
+  - Exemplo de resposta:
+  ```
+  {
+    "appointment_id": "123",
+    "token": "123", // UUID gerado
+    "patient_link": "https://intake.budmed.com.br/patient/?token=123"
+  }
+  ```
+
+ - GET /appointments/{appointmentId}/intake-response
+  - Exemplo de resposta:
+  ```
+  {
+    "appointment_id": "123",
+    "answers": {}, // JSON da pré-anamnese
+    "submitted_at": "2023-08-10T12:00:00Z"
+  }
+  ```
