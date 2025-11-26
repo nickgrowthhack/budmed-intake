@@ -46,8 +46,7 @@ Esse link é específico para cada consulta realizada dentro da BudMed, e uma ve
 
 - intake_responses ("Aqui estão as respostas da anamnese para esta consulta.")
   - id
-  - appointment_id
-  - token
+  - intake_link_id
   - answers
   - submitted_at
 
@@ -84,7 +83,7 @@ Exemplo de requisição:
 Exemplo de resposta:
 ```
 {
-  "status": "received",
+  "status": "saved",
   "appointment_id": "123",
   "token": "123",
   "submitted_at": "2025-11-26T12:00:00Z"
