@@ -51,7 +51,9 @@ Esse link é específico para cada consulta realizada dentro da BudMed, e uma ve
   - answers
   - submitted_at
  
- ### Endpoints
+---
+
+### Endpoints
 
 - **POST /appointments/{appointmentId}/intake-link**
 
