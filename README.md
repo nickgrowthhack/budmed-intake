@@ -34,14 +34,7 @@ Esse link é específico para cada consulta realizada dentro da BudMed, e uma ve
 
 ---
 
-## 🧱 Arquitetura
-
-- Front-end: Next.js
-- Back-end: Supabase (PostgreSQL + Row Level Security)
-
----
-
-## Tabelas & Endpoints
+## 🧱 Tabelas & Endpoints
 
 ### Tabelas
 
