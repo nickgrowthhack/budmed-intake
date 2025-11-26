@@ -50,7 +50,7 @@ Esse link é específico para cada consulta realizada dentro da BudMed, e uma ve
   - token
   - answers
   - submitted_at
- 
+
 ---
 
 ### Endpoints
@@ -100,4 +100,14 @@ Exemplo de resposta:
   "answers": null, // JSON da pré-anamnese
   "submitted_at": null
 }
+
+---
+
+## 📦 Estrutura do projeto
+
+- `supabase/migrations/0001_init.sql` — schema das tabelas e RLS habilitado.
+- `functions/intake-link/index.ts` — handler do `POST /appointments/{appointmentId}/intake-link`.
+- `functions/intake-response/index.ts` — handler do `POST /intake/{token}/response`.
+- `functions/intake-get/index.ts` — handler do `GET /appointments/{appointmentId}/intake-response`.
+- `web/patient/index.html` e `web/patient/app.js` — microfrontend público do paciente.
 ```

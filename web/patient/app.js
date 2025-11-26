@@ -1,0 +1,4 @@
+const form=document.getElementById('form')
+const statusEl=document.getElementById('status')
+function getToken(){const u=new URL(window.location.href);return u.searchParams.get('token')||''}
+form.addEventListener('submit',async e=>{e.preventDefault();const token=getToken();if(!token){statusEl.textContent='Token inválido';return}const payload={answers:{queixa_principal:document.getElementById('queixa').value,historico_relevante:document.getElementById('historico').value,alergias:document.getElementById('alergias').value}};statusEl.textContent='Enviando...';try{const r=await fetch(`/intake/${token}/response`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)});const j=await r.json();statusEl.textContent=j.status==='received'?'Respostas enviadas':'Falha ao enviar'}catch(_){statusEl.textContent='Erro de rede'}})

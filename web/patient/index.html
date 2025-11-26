@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pré-anamnese BudMed</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:24px;background:#f7f7f8;color:#111}
+    .card{max-width:640px;margin:0 auto;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px}
+    h1{font-size:20px;margin:0 0 12px}
+    label{display:block;font-size:14px;margin:12px 0 6px}
+    textarea,input{width:100%;padding:10px;border:1px solid #d1d5db;border-radius:8px;font-size:14px}
+    button{margin-top:16px;background:#111;color:#fff;border:none;border-radius:8px;padding:10px 14px;font-size:14px}
+    .notice{margin-top:12px;font-size:13px;color:#6b7280}
+  </style>
+  <script defer src="./app.js"></script>
+ </head>
+<body>
+  <div class="card">
+    <h1>Pré-anamnese</h1>
+    <form id="form">
+      <label for="queixa">Queixa principal</label>
+      <textarea id="queixa" rows="3" required></textarea>
+      <label for="historico">Histórico relevante</label>
+      <textarea id="historico" rows="3" required></textarea>
+      <label for="alergias">Alergias</label>
+      <input id="alergias" type="text" required />
+      <button type="submit">Enviar</button>
+      <div class="notice" id="status"></div>
+    </form>
+  </div>
+</body>
+</html>
