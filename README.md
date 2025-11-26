@@ -18,10 +18,10 @@ Esse link é específico para cada consulta realizada dentro da BudMed, e uma ve
 
 ### O que este microprojeto faz
 
-- Gera e gerencia _links únicos de pré-anamnese_, SEMPRE associados a uma consulta específica.
-- Exibe um _formulário PÚBLICO e SEGURO_.
-- Salva essas respostas no SUPABASE usando _Postgres + RLS_.
-- Permite que esses dados sejam retornados a partir de um _ENDPOINT_ com:
+- Gera e gerencia **links únicos de pré-anamnese**, SEMPRE associados a uma consulta específica.
+- Exibe um **formulário PÚBLICO e SEGURO**.
+- Salva essas respostas no SUPABASE usando **Postgres + RLS**.
+- Permite que esses dados sejam retornados a partir de um **ENDPOINT** com:
   - O ID da consulta.
   - O token de segurança.
 
