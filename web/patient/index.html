@@ -6,7 +6,7 @@
   <title>Pré-anamnese BudMed</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
   <script src="./config.js"></script>
   <script defer src="./app.js"></script>
@@ -15,6 +15,11 @@
   <div class="card">
     <h1>Budmed | Pré-anamnese</h1>
     <form id="form">
+      <section style="display:none">
+        <textarea id="queixa"></textarea>
+        <textarea id="historico"></textarea>
+        <textarea id="alergias"></textarea>
+      </section>
       <section class="step" data-step="1" aria-current="step">
         <section class="intro">
           <p>Seu bem-estar é muito importante para nós. 💚</p>
@@ -23,24 +28,9 @@
           <p>Complete suas informações para melhor aproveitamento da sua consulta.</p>
         </section>
         <section class="section">
-          <label for="queixa">Queixa principal</label>
-          <span id="queixa_help" class="notice">Descreva em poucas palavras o motivo da consulta.</span>
-          <textarea id="queixa" name="queixa" rows="4" aria-describedby="queixa_help"></textarea>
-        </section>
-        <section class="section">
-          <label for="historico">Histórico relevante</label>
-          <span id="historico_help" class="notice">Inclua tratamentos, diagnósticos e tempo dos sintomas.</span>
-          <textarea id="historico" name="historico" rows="4" aria-describedby="historico_help"></textarea>
-        </section>
-        <section class="section">
-          <label for="alergias">Alergias</label>
-          <span id="alergias_help" class="notice">Liste alergias a medicamentos ou substâncias.</span>
-          <textarea id="alergias" name="alergias" rows="3" aria-describedby="alergias_help"></textarea>
-        </section>
-        <section class="section">
           <label class="question">O que te trouxe até nós hoje? Qual o seu principal objetivo? Você pode selecionar mais de uma opção.</label>
           <fieldset>
-            <legend>Gerenciamento da dor</legend>
+            <legend>Gerenciamento da dor <span class="req-star">*</span></legend>
             <div class="options">
               <label class="option"><input type="checkbox" name="objetivos_dor" value="Dor Crônica (dores no corpo, articulações, musculares, fibromialgia, etc.)"> Dor Crônica (dores no corpo, articulações, musculares, fibromialgia, etc.)</label>
               <label class="option"><input type="checkbox" name="objetivos_dor" value="Dor Neuropática (neuralgia, ciática, etc.)"> Dor Neuropática (neuralgia, ciática, etc.)</label>
@@ -51,7 +41,7 @@
             </div>
           </fieldset>
           <fieldset>
-            <legend>Melhora do sono</legend>
+            <legend>Melhora do sono <span class="req-star">*</span></legend>
             <div class="options">
               <label class="option"><input type="checkbox" name="objetivos_sono" value="Dificuldade para iniciar o sono (insônia inicial)"> Dificuldade para iniciar o sono (insônia inicial)</label>
               <label class="option"><input type="checkbox" name="objetivos_sono" value="Despertares noturnos frequentes"> Despertares noturnos frequentes</label>
@@ -61,7 +51,7 @@
             </div>
           </fieldset>
           <fieldset>
-            <legend>Saúde mental e emocional</legend>
+            <legend>Saúde mental e emocional <span class="req-star">*</span></legend>
             <div class="options">
               <label class="option"><input type="checkbox" name="objetivos_mental" value="Ansiedade / Estresse excessivo"> Ansiedade / Estresse excessivo</label>
               <label class="option"><input type="checkbox" name="objetivos_mental" value="Sintomas de Depressão / Tristeza persistente"> Sintomas de Depressão / Tristeza persistente</label>
@@ -72,7 +62,7 @@
             </div>
           </fieldset>
           <fieldset>
-            <legend>Conforto gastrointestinal</legend>
+            <legend>Conforto gastrointestinal <span class="req-star">*</span></legend>
             <div class="options">
               <label class="option"><input type="checkbox" name="objetivos_gastro" value="Náuseas / Vômitos"> Náuseas / Vômitos</label>
               <label class="option"><input type="checkbox" name="objetivos_gastro" value="Doenças Inflamatórias Intestinais (DII) / Síndrome do Intestino Irritável (SII)"> Doenças Inflamatórias Intestinais (DII) / Síndrome do Intestino Irritável (SII)</label>
@@ -82,7 +72,7 @@
             </div>
           </fieldset>
           <fieldset>
-            <legend>Condições neurológicas</legend>
+            <legend>Condições neurológicas <span class="req-star">*</span></legend>
             <div class="options">
               <label class="option"><input type="checkbox" name="objetivos_neuro" value="Epilepsia / Convulsões"> Epilepsia / Convulsões</label>
               <label class="option"><input type="checkbox" name="objetivos_neuro" value="Tremores / Parkinson"> Tremores / Parkinson</label>
@@ -91,7 +81,7 @@
             </div>
           </fieldset>
           <fieldset>
-            <legend>Outros objetivos de saúde</legend>
+            <legend>Outros objetivos de saúde <span class="req-star">*</span></legend>
             <div class="options">
               <label class="option"><input type="checkbox" name="objetivos_outros" value="Condição de pele (acne, psoríase, dermatite)"> Condição de pele (acne, psoríase, dermatite)</label>
               <label class="option"><input type="checkbox" name="objetivos_outros" value="Melhora da qualidade de vida geral"> Melhora da qualidade de vida geral</label>
@@ -110,7 +100,7 @@
         </section>
         <section class="section">
           <fieldset>
-            <legend>Nas últimas duas semanas, com que frequência você se sentiu incomodado(a) por estar nervoso(a), ansioso(a) ou muito tenso(a)?</legend>
+            <legend>Nas últimas duas semanas, com que frequência você se sentiu incomodado(a) por estar nervoso(a), ansioso(a) ou muito tenso(a)? <span class="req-star">*</span></legend>
             <div class="options">
               <label class="option"><input type="radio" name="ansiedade_freq" value="Nenhuma vez"> Nenhuma vez</label>
               <label class="option"><input type="radio" name="ansiedade_freq" value="Alguns dias"> Alguns dias</label>
@@ -121,7 +111,7 @@
         </section>
         <section class="section">
           <fieldset>
-            <legend>Nas últimas duas semanas, com que frequência você sentiu pouco interesse ou prazer em fazer as coisas?</legend>
+            <legend>Nas últimas duas semanas, com que frequência você sentiu pouco interesse ou prazer em fazer as coisas? <span class="req-star">*</span></legend>
             <div class="options">
               <label class="option"><input type="radio" name="anedonia_freq" value="Nenhuma vez"> Nenhuma vez</label>
               <label class="option"><input type="radio" name="anedonia_freq" value="Alguns dias"> Alguns dias</label>
@@ -132,13 +122,13 @@
         </section>
         <section class="section">
           <fieldset>
-            <legend>Você já teve diagnóstico ou tratamento para alguma condição psiquiátrica séria (ex: transtorno bipolar, esquizofrenia, histórico de psicoses)?</legend>
+            <legend>Você já teve diagnóstico ou tratamento para alguma condição psiquiátrica séria (ex: transtorno bipolar, esquizofrenia, histórico de psicoses)? <span class="req-star">*</span></legend>
             <div class="options">
               <label class="option"><input type="radio" name="diagnostico_psiquiatrico" value="Não"> Não</label>
               <label class="option"><input type="radio" name="diagnostico_psiquiatrico" value="Não tenho certeza"> Não tenho certeza</label>
               <label class="option"><input type="radio" name="diagnostico_psiquiatrico" value="Outro"> Outro (escreva)</label>
             </div>
-            <label for="diagnostico_psiquiatrico_outro" class="notice">Se escolheu "Outro", descreva:</label>
+            <label for="diagnostico_psiquiatrico_outro" class="notice">Se escolheu "Outro", descreva: <span class="req-star">*</span></label>
             <input type="text" id="diagnostico_psiquiatrico_outro" name="diagnostico_psiquiatrico_outro" style="display:none" />
           </fieldset>
         </section>
@@ -151,7 +141,7 @@
         </section>
         <section class="section">
           <fieldset>
-            <legend>Geralmente, quanto tempo leva para você adormecer depois de se deitar?</legend>
+            <legend>Geralmente, quanto tempo leva para você adormecer depois de se deitar? <span class="req-star">*</span></legend>
             <div class="options">
               <label class="option"><input type="radio" name="tempo_adormecer" value="Menos de 15 minutos"> Menos de 15 minutos</label>
               <label class="option"><input type="radio" name="tempo_adormecer" value="15-30 minutos"> 15-30 minutos</label>
@@ -162,7 +152,7 @@
         </section>
         <section class="section">
           <fieldset>
-            <legend>Como você avalia a qualidade geral do seu sono nas últimas duas semanas?</legend>
+            <legend>Como você avalia a qualidade geral do seu sono nas últimas duas semanas? <span class="req-star">*</span></legend>
             <div class="options">
               <label class="option"><input type="radio" name="qualidade_sono" value="Muito boa"> Muito boa</label>
               <label class="option"><input type="radio" name="qualidade_sono" value="Boa"> Boa</label>
@@ -174,7 +164,7 @@
         </section>
         <section class="section">
           <fieldset>
-            <legend>Considerando seu padrão de sono, você gostaria de buscar melhorias na qualidade ou duração do seu sono?</legend>
+            <legend>Considerando seu padrão de sono, você gostaria de buscar melhorias na qualidade ou duração do seu sono? <span class="req-star">*</span></legend>
             <div class="options">
               <label class="option"><input type="radio" name="melhorar_sono" value="Sim, gostaria muito de melhorar meu sono."> Sim, gostaria muito de melhorar meu sono.</label>
               <label class="option"><input type="radio" name="melhorar_sono" value="Sim, considero importante, mas não é uma prioridade agora."> Sim, considero importante, mas não é uma prioridade agora.</label>
@@ -191,18 +181,18 @@
         </section>
         <section class="section">
           <fieldset>
-            <legend>Você utiliza algum medicamento atualmente (prescritos ou de venda livre, contínuos ou eventuais)? (Se sim, especifique.)</legend>
+            <legend>Você utiliza algum medicamento atualmente (prescritos ou de venda livre, contínuos ou eventuais)? (Se sim, especifique.) <span class="req-star">*</span></legend>
             <div class="options">
               <label class="option"><input type="radio" name="medicamentos_uso" value="Sim"> Sim</label>
               <label class="option"><input type="radio" name="medicamentos_uso" value="Não"> Não</label>
             </div>
-            <label for="medicamentos_quais" class="notice">Se escolheu "Sim", especifique:</label>
+            <label for="medicamentos_quais" class="notice">Se escolheu "Sim", especifique: <span class="req-star">*</span></label>
             <input type="text" id="medicamentos_quais" name="medicamentos_quais" style="display:none" />
           </fieldset>
         </section>
         <section class="section">
           <fieldset>
-            <legend>Você possui alguma destas condições de saúde ou já teve alguma cirurgia importante?</legend>
+            <legend>Você possui alguma destas condições de saúde ou já teve alguma cirurgia importante? <span class="req-star">*</span></legend>
             <div class="options">
               <label class="option"><input type="checkbox" name="condicoes_saude" value="Problemas renais"> Problemas renais</label>
               <label class="option"><input type="checkbox" name="condicoes_saude" value="Problemas hepáticos"> Problemas hepáticos</label>
@@ -216,12 +206,12 @@
               <label class="option"><input type="checkbox" name="condicoes_saude" value="Não se aplica"> Não se aplica</label>
               <label class="option"><input type="checkbox" name="condicoes_saude" value="Outro (especifique)"> Outro (especifique)</label>
             </div>
-            <label for="condicoes_saude_outro" class="notice">Se escolheu "Outro", descreva:</label>
+            <label for="condicoes_saude_outro" class="notice">Se escolheu "Outro", descreva: <span class="req-star">*</span></label>
             <input type="text" id="condicoes_saude_outro" name="condicoes_saude_outro" style="display:none" />
           </fieldset>
         </section>
         <section class="section">
-          <label for="exames_lab">Quando foi a última vez que realizou exames laboratoriais de rotina e qual foi o resultado geral?</label>
+          <label for="exames_lab">Quando foi a última vez que realizou exames laboratoriais de rotina e qual foi o resultado geral? <span class="req-star">*</span></label>
           <textarea id="exames_lab" name="exames_lab" rows="3"></textarea>
         </section>
         <div class="step-nav"><button type="button" id="back">Voltar</button><button type="button" id="next">Avançar</button></div>
@@ -233,7 +223,7 @@
         </section>
         <section class="section">
           <fieldset>
-            <legend>Qual a sua experiência com a Cannabis ou produtos derivados?</legend>
+            <legend>Qual a sua experiência com a Cannabis ou produtos derivados? <span class="req-star">*</span></legend>
             <div class="options">
               <label class="option"><input type="radio" name="experiencia_cannabis" value="Nunca usei, mas tenho interesse no uso terapêutico."> Nunca usei, mas tenho interesse no uso terapêutico.</label>
               <label class="option"><input type="radio" name="experiencia_cannabis" value="Já usei apenas produtos com CBD (Canabidiol) para fins terapêuticos."> Já usei apenas produtos com CBD (Canabidiol) para fins terapêuticos.</label>
@@ -246,7 +236,7 @@
           </fieldset>
         </section>
         <section class="section">
-          <label for="experiencia_cannabis_detalhes" class="notice">Se sua resposta anterior for "já usei": pode nos contar um pouco sobre essa experiência? Quais produtos utilizou (se souber)? Com que frequência e quantidade? O que sentiu (efeitos positivos e negativos)? Houve prescrição médica ou odontológica para o uso terapêutico?</label>
+          <label for="experiencia_cannabis_detalhes" class="notice">Se sua resposta anterior for "já usei": pode nos contar um pouco sobre essa experiência? Quais produtos utilizou (se souber)? Com que frequência e quantidade? O que sentiu (efeitos positivos e negativos)? Houve prescrição médica ou odontológica para o uso terapêutico? <span class="req-star">*</span></label>
           <textarea id="experiencia_cannabis_detalhes" name="experiencia_cannabis_detalhes" rows="4" style="display:none"></textarea>
         </section>
         <div class="step-nav"><button type="button" id="back">Voltar</button><button type="button" id="next">Avançar</button></div>
@@ -262,20 +252,20 @@
         </section>
         <section class="section">
           <fieldset>
-            <legend>Sua alimentação é geralmente:</legend>
+            <legend>Sua alimentação é geralmente: <span class="req-star">*</span></legend>
             <div class="options">
               <label class="option"><input type="radio" name="alimentacao" value="Muito saudável e equilibrada"> Muito saudável e equilibrada</label>
               <label class="option"><input type="radio" name="alimentacao" value="Equilibrada, com alguns deslizes"> Equilibrada, com alguns deslizes</label>
               <label class="option"><input type="radio" name="alimentacao" value="Precisa melhorar bastante"> Precisa melhorar bastante</label>
               <label class="option"><input type="radio" name="alimentacao" value="Outro (especifique)"> Outro (especifique)</label>
             </div>
-            <label for="alimentacao_outro" class="notice">Se escolheu "Outro", descreva:</label>
+            <label for="alimentacao_outro" class="notice">Se escolheu "Outro", descreva: <span class="req-star">*</span></label>
             <input type="text" id="alimentacao_outro" name="alimentacao_outro" style="display:none" />
           </fieldset>
         </section>
         <section class="section">
           <fieldset>
-            <legend>Você pratica atividade física regularmente?</legend>
+            <legend>Você pratica atividade física regularmente? <span class="req-star">*</span></legend>
             <div class="options">
               <label class="option"><input type="radio" name="atividade_fisica" value="Sim, 3x ou mais por semana"> Sim, 3x ou mais por semana</label>
               <label class="option"><input type="radio" name="atividade_fisica" value="Sim, 1-2x por semana"> Sim, 1-2x por semana</label>
@@ -286,7 +276,7 @@
         </section>
         <section class="section">
           <fieldset>
-            <legend>Você fuma (tabaco ou outros)?</legend>
+            <legend>Você fuma (tabaco ou outros)? <span class="req-star">*</span></legend>
             <div class="options">
               <label class="option"><input type="radio" name="fuma" value="Não fuma."> Não fuma.</label>
               <label class="option"><input type="radio" name="fuma" value="Sim, ocasionalmente."> Sim, ocasionalmente.</label>
@@ -296,7 +286,7 @@
         </section>
         <section class="section">
           <fieldset>
-            <legend>Você consome bebidas alcoólicas?</legend>
+            <legend>Você consome bebidas alcoólicas? <span class="req-star">*</span></legend>
             <div class="options">
               <label class="option"><input type="radio" name="alcool" value="Não consumo."> Não consumo.</label>
               <label class="option"><input type="radio" name="alcool" value="Sim, ocasionalmente."> Sim, ocasionalmente.</label>
