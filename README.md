@@ -111,3 +111,19 @@ Exemplo de resposta:
 - `functions/intake-response/index.ts` — handler do `POST /intake/{token}/response`.
 - `functions/intake-get/index.ts` — handler do `GET /appointments/{appointmentId}/intake-response`.
 - `web/patient/index.html` e `web/patient/app.js` — microfrontend público do paciente.
+
+---
+
+## 🔐 Configuração de variáveis
+
+- Copie `supabase/.env.example` para `supabase/.env` e preencha:
+  - `SUPABASE_URL`
+  - `SUPABASE_ANON_KEY`
+  - `SUPABASE_SERVICE_ROLE_KEY`
+  - `PUBLIC_INTAKE_BASE_URL` (ex.: `https://intake.budmed.com.br/patient/`)
+- Copie `web/patient/config.example.js` para `web/patient/config.js` e preencha:
+  - `SUPABASE_URL`
+  - `SUPABASE_ANON_KEY`
+  - `PUBLIC_FUNCTION_BASE_URL` (opcional)
+  - `PUBLIC_INTAKE_BASE_URL`
+- Defina as mesmas variáveis no Supabase (Dashboard) para produção das Edge Functions. Nunca exponha `SERVICE_ROLE_KEY` no frontend.
