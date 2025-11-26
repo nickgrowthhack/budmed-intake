@@ -66,6 +66,8 @@ Exemplo de resposta:
 }
 ```
 
+Se já existir um link de intake para esta consulta, o endpoint retorna o mesmo token e patient_link (não cria outro).
+
 - **POST /intake/{token}/response**
 
 Exemplo de requisição:
