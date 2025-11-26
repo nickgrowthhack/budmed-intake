@@ -1,13 +1,13 @@
 # BudMed Intake
 
-BudMed Intake é um microprojeto independente responsável por gerenciar o formulário de pré-anamnese (em inglês: "intake") da plataforma BudMed. O objetivo é permitir que o paciente, antes da consulta médica, receba um link único, preencha informações clínicas relevantes e envie esses dados. Durante a consulta, o médico pode visualizar tudo o que foi respondido dentro do sistema principal da BudMed.
+BudMed Intake é um microprojeto independente responsável por gerenciar o formulário de anamnese (em inglês: "intake") da plataforma BudMed. O objetivo é permitir que o paciente, antes da consulta médica, receba um link único, preencha informações clínicas relevantes e envie esses dados. Durante a consulta, o médico pode visualizar tudo o que foi respondido dentro do sistema principal da BudMed.
 
 O BudMed Intake permite que toda a preparação clínica da consulta seja feita antes do atendimento, agilizando diagnósticos, melhorando a qualidade do atendimento médico e reduzindo retrabalho no momento da consulta.
 
 De maneira prática, cada consulta pode gerar um link único como este:
 
 ```
-https://intake.budmed.com.br/patient/?token=123
+https://anamnese.budmed.com.br/patient/?token=123
 ```
 
 Esse link é específico para cada consulta realizada dentro da BudMed, e uma vez respondido, as respostas não podem ser alteradas e nem visualizadas por qualquer outro usuário que acesse o link que não seja o próprio médico.
@@ -18,7 +18,7 @@ Esse link é específico para cada consulta realizada dentro da BudMed, e uma ve
 
 ### O que este microprojeto faz
 
-- Gera e gerencia **links únicos de pré-anamnese**, SEMPRE associados a uma consulta específica.
+- Gera e gerencia **links únicos de anamnese**, SEMPRE associados a uma consulta específica.
 - Exibe um **formulário PÚBLICO e SEGURO**.
 - Salva essas respostas no SUPABASE usando **Postgres + RLS**.
 - Permite que esses dados sejam retornados a partir de um **ENDPOINT** com:
@@ -44,7 +44,7 @@ Esse link é específico para cada consulta realizada dentro da BudMed, e uma ve
   - token
   - created_at
 
-- intake_responses ("Aqui estão as respostas da pré-anamnese para esta consulta.")
+- intake_responses ("Aqui estão as respostas da anamnese para esta consulta.")
   - id
   - appointment_id
   - token
@@ -66,7 +66,7 @@ Exemplo de resposta:
 }
 ```
 
-Se já existir um link de intake para esta consulta, o endpoint retorna o mesmo token e patient_link (não cria outro).
+Se já existir um link de anamnese para esta consulta, o endpoint retorna o mesmo token e patient_link (não cria outro).
 
 - **POST /intake/{token}/response**
 
