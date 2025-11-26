@@ -66,7 +66,7 @@ Exemplo de resposta:
 }
 ```
 
-- **POST /intake/{token}/response** ("O paciente está enviando as respostas da pré-anamnese usando este token.")
+- **POST /intake/{token}/response**
 
 Exemplo de requisição:
 ```
