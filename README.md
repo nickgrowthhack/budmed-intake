@@ -63,21 +63,21 @@ Esse link é específico para cada consulta realizada dentro da BudMed, e uma ve
  - POST /appointments/{appointmentId}/intake-link
 
 Exemplo de resposta:
-  ```
+```
   {
     "appointment_id": "123",
     "token": "123", // UUID gerado
     "patient_link": "https://intake.budmed.com.br/patient/?token=123"
   }
-  ```
+```
 
  - GET /appointments/{appointmentId}/intake-response
 
 Exemplo de resposta:
-  ```
+```
   {
     "appointment_id": "123",
     "answers": {}, // JSON da pré-anamnese
     "submitted_at": "2023-08-10T12:00:00Z"
   }
-  ```
+```
