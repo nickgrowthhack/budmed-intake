@@ -100,6 +100,7 @@ Exemplo de resposta:
   "answers": null, // JSON da pré-anamnese
   "submitted_at": null
 }
+```
 
 ---
 
@@ -110,4 +111,3 @@ Exemplo de resposta:
 - `functions/intake-response/index.ts` — handler do `POST /intake/{token}/response`.
 - `functions/intake-get/index.ts` — handler do `GET /appointments/{appointmentId}/intake-response`.
 - `web/patient/index.html` e `web/patient/app.js` — microfrontend público do paciente.
-```
