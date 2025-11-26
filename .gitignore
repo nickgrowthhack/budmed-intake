@@ -1,0 +1,16 @@
+supabase/.env
+web/patient/config.js
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp
+coverage/
+.env
+.env.local
+.env.*.local
