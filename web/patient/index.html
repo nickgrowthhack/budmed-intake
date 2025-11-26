@@ -246,8 +246,64 @@
           </fieldset>
         </section>
         <section class="section">
-          <label for="experiencia_cannabis_detalhes" class="notice">Se sua resposta anterior for "já usei": conte sobre sua experiência (produtos, frequência, quantidade, efeitos, prescrição).</label>
+          <label for="experiencia_cannabis_detalhes" class="notice">Se sua resposta anterior for "já usei": pode nos contar um pouco sobre essa experiência? Quais produtos utilizou (se souber)? Com que frequência e quantidade? O que sentiu (efeitos positivos e negativos)? Houve prescrição médica ou odontológica para o uso terapêutico?</label>
           <textarea id="experiencia_cannabis_detalhes" name="experiencia_cannabis_detalhes" rows="4" style="display:none"></textarea>
+        </section>
+        <div class="step-nav"><button type="button" id="back">Voltar</button><button type="button" id="next">Avançar</button></div>
+      </section>
+      <section class="step hidden" data-step="6">
+        <section class="section">
+          <label class="question">Seu Estilo de Vida</label>
+          <span class="notice">Um olhar sobre seus hábitos para uma visão completa do seu bem-estar.</span>
+        </section>
+        <section class="section">
+          <label for="ocupacao">Qual a sua ocupação profissional?</label>
+          <input type="text" id="ocupacao" name="ocupacao" />
+        </section>
+        <section class="section">
+          <fieldset>
+            <legend>Sua alimentação é geralmente:</legend>
+            <div class="options">
+              <label class="option"><input type="radio" name="alimentacao" value="Muito saudável e equilibrada"> Muito saudável e equilibrada</label>
+              <label class="option"><input type="radio" name="alimentacao" value="Equilibrada, com alguns deslizes"> Equilibrada, com alguns deslizes</label>
+              <label class="option"><input type="radio" name="alimentacao" value="Precisa melhorar bastante"> Precisa melhorar bastante</label>
+              <label class="option"><input type="radio" name="alimentacao" value="Outro (especifique)"> Outro (especifique)</label>
+            </div>
+            <label for="alimentacao_outro" class="notice">Se escolheu "Outro", descreva:</label>
+            <input type="text" id="alimentacao_outro" name="alimentacao_outro" style="display:none" />
+          </fieldset>
+        </section>
+        <section class="section">
+          <fieldset>
+            <legend>Você pratica atividade física regularmente?</legend>
+            <div class="options">
+              <label class="option"><input type="radio" name="atividade_fisica" value="Sim, 3x ou mais por semana"> Sim, 3x ou mais por semana</label>
+              <label class="option"><input type="radio" name="atividade_fisica" value="Sim, 1-2x por semana"> Sim, 1-2x por semana</label>
+              <label class="option"><input type="radio" name="atividade_fisica" value="Não, mas gostaria"> Não, mas gostaria</label>
+              <label class="option"><input type="radio" name="atividade_fisica" value="Não pratico"> Não pratico</label>
+            </div>
+          </fieldset>
+        </section>
+        <section class="section">
+          <fieldset>
+            <legend>Você fuma (tabaco ou outros)?</legend>
+            <div class="options">
+              <label class="option"><input type="radio" name="fuma" value="Não fuma."> Não fuma.</label>
+              <label class="option"><input type="radio" name="fuma" value="Sim, ocasionalmente."> Sim, ocasionalmente.</label>
+              <label class="option"><input type="radio" name="fuma" value="Sim, regularmente."> Sim, regularmente.</label>
+            </div>
+          </fieldset>
+        </section>
+        <section class="section">
+          <fieldset>
+            <legend>Você consome bebidas alcoólicas?</legend>
+            <div class="options">
+              <label class="option"><input type="radio" name="alcool" value="Não consumo."> Não consumo.</label>
+              <label class="option"><input type="radio" name="alcool" value="Sim, ocasionalmente."> Sim, ocasionalmente.</label>
+              <label class="option"><input type="radio" name="alcool" value="Sim, algumas vezes na semana."> Sim, algumas vezes na semana.</label>
+              <label class="option"><input type="radio" name="alcool" value="Sim, diariamente."> Sim, diariamente.</label>
+            </div>
+          </fieldset>
         </section>
         <div class="step-nav"><button type="button" id="back">Voltar</button><button type="submit">Enviar</button></div>
       </section>
