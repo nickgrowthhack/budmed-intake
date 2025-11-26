@@ -61,6 +61,7 @@ Esse link é específico para cada consulta realizada dentro da BudMed, e uma ve
  ### Endpoints
 
  - POST /appointments/{appointmentId}/intake-link
+
 Exemplo de resposta:
   ```
   {
@@ -71,6 +72,7 @@ Exemplo de resposta:
   ```
 
  - GET /appointments/{appointmentId}/intake-response
+
 Exemplo de resposta:
   ```
   {
