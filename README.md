@@ -115,14 +115,13 @@ Exemplo de resposta:
 
 ## 🔐 Configuração de variáveis
 
-- Copie `supabase/.env.example` para `supabase/.env` e preencha:
+- `supabase/.env`:
   - `SUPABASE_URL`
   - `SUPABASE_ANON_KEY`
   - `SUPABASE_SERVICE_ROLE_KEY`
   - `PUBLIC_INTAKE_BASE_URL` (ex.: `https://intake.budmed.com.br/patient/`)
-- Copie `web/patient/config.example.js` para `web/patient/config.js` e preencha:
+- `web/patient/config.js`:
   - `SUPABASE_URL`
   - `SUPABASE_ANON_KEY`
   - `PUBLIC_FUNCTION_BASE_URL` (opcional)
   - `PUBLIC_INTAKE_BASE_URL`
-- Defina as mesmas variáveis no Supabase (Dashboard) para produção das Edge Functions. Nunca exponha `SERVICE_ROLE_KEY` no frontend.
