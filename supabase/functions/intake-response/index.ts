@@ -65,19 +65,39 @@ Deno.serve(async (req) => {
         status = 404
         body = { error: 'Link não encontrado', token }
       } else {
-        const { data: resp, error: respError } = await withTimeout(
+        const { data: existing } = await withTimeout(
           supabase
             .from('intake_responses')
-            .upsert({ intake_link_id: link.id, answers }, { onConflict: 'intake_link_id' })
-            .select('submitted_at')
-            .single(),
+            .select('id, submitted_at')
+            .eq('intake_link_id', link.id)
+            .maybeSingle(),
           7000
         )
-        if (respError) {
-          status = 500
-          body = { error: respError.message }
+        if (existing) {
+          status = 409
+          body = { error: 'Já enviado', appointment_id: link.appointment_id, token, submitted_at: existing.submitted_at }
         } else {
-          body = { status: 'saved', appointment_id: link.appointment_id, token, submitted_at: resp?.submitted_at || new Date().toISOString() }
+          const { data: resp, error: respError } = await withTimeout(
+            supabase
+              .from('intake_responses')
+              .insert({ intake_link_id: link.id, answers })
+              .select('submitted_at')
+              .single(),
+            7000
+          )
+          if (respError) {
+            const code = (respError as any)?.code || ''
+            const msg = String(respError.message || '')
+            if (code === '409' || msg.includes('duplicate key') || msg.includes('already exists')) {
+              status = 409
+              body = { error: 'Já enviado', appointment_id: link.appointment_id, token }
+            } else {
+              status = 500
+              body = { error: respError.message }
+            }
+          } else {
+            body = { status: 'saved', appointment_id: link.appointment_id, token, submitted_at: resp?.submitted_at || new Date().toISOString() }
+          }
         }
       }
     } catch (e: any) {
