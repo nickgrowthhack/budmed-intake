@@ -14,7 +14,11 @@
 <body>
   <div class="card">
     <h1>BudMed | Pré-anamnese</h1>
-    <form id="form">
+    <div id="gate" class="gate">
+      <div id="gate-icon" class="spinner" aria-hidden="true"></div>
+      <div id="gate-message" class="notice">Validando link…</div>
+    </div>
+    <form id="form" style="display:none">
       <section style="display:none">
         <textarea id="queixa"></textarea>
         <textarea id="historico"></textarea>
