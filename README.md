@@ -43,6 +43,7 @@ Esse link é específico para cada consulta realizada dentro da BudMed, e uma ve
   - appointment_id
   - token
   - created_at
+  - patient_link (campo **derivado**, não salvo no banco; montado com `PUBLIC_INTAKE_BASE_URL + token` para retorno do endpoint)
 
 - intake_responses ("Aqui estão as respostas da anamnese para esta consulta.")
   - id
