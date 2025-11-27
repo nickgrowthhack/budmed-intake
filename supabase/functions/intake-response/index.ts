@@ -1,6 +1,15 @@
-import { createClient } from "npm:@supabase/supabase-js@2";
+import { createClient } from "npm:@supabase/supabase-js@2"
 
 export default async function handleRequest(req: Request): Promise<Response> {
+  const corsHeaders = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS'
+  }
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { status: 200, headers: corsHeaders })
+  }
+
   const url = new URL(req.url)
   const token = url.pathname.split('/').filter(Boolean).pop() ?? ''
   const { answers } = await req.json()
@@ -40,5 +49,5 @@ export default async function handleRequest(req: Request): Promise<Response> {
     }
   }
 
-  return new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } })
+  return new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, 'content-type': 'application/json' } })
 }
