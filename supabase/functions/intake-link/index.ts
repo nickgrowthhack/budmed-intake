@@ -1,5 +1,10 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 
+async function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
+  const t = new Promise<never>((_, r) => setTimeout(() => r(new Error('timeout')), ms));
+  return Promise.race([p, t]) as Promise<T>;
+}
+
 export default async function handleRequest(req: Request): Promise<Response> {
   const url = new URL(req.url)
   const appointmentId = url.pathname.split('/').filter(Boolean).pop() ?? ''
@@ -18,16 +23,22 @@ export default async function handleRequest(req: Request): Promise<Response> {
       body = { error: 'Variáveis de ambiente ausentes', appointment_id: appointmentId, token, patient_link: patientLink }
     } else {
       const supabase = createClient(supabaseUrl, serviceKey)
-      const { data, error } = await supabase
-        .from('intake_links')
-        .upsert({ appointment_id: appointmentId, token }, { onConflict: 'appointment_id' })
-        .select('token')
-        .single()
-      if (error) {
-        status = 500
-        body = { error: error.message }
-      } else {
-        body.token = data?.token || token
+      try {
+        const { error } = await withTimeout(
+          supabase
+            .from('intake_links')
+            .upsert({ appointment_id: appointmentId, token }, { onConflict: 'appointment_id' }),
+          25000
+        )
+        if (error) {
+          status = 500
+          body = { error: error.message }
+        } else {
+          body.token = token
+        }
+      } catch (e) {
+        status = e instanceof Error && e.message === 'timeout' ? 504 : 500
+        body = { error: e instanceof Error ? e.message : 'Erro desconhecido' }
       }
     }
   }
