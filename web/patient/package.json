@@ -1,0 +1,7 @@
+{
+  "name": "budmed-intake-frontend",
+  "private": true,
+  "scripts": {
+    "build:config": "node scripts/generate-config.js"
+  }
+}
