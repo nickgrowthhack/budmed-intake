@@ -4,7 +4,9 @@ export default async function handleRequest(req: Request): Promise<Response> {
   const url = new URL(req.url)
   const appointmentId = url.pathname.split('/').filter(Boolean).pop() ?? ''
   const token = crypto.randomUUID()
-  const base = (typeof Deno !== 'undefined' && Deno.env.get('PUBLIC_INTAKE_BASE_URL')) || 'https://intake.budmed.com.br/patient/'
+  const base =
+    (typeof Deno !== 'undefined' && Deno.env.get('PUBLIC_INTAKE_BASE_URL')) ||
+    'https://intake.budmed.com.br/patient/'
   const patientLink = `${base}?token=${token}`
 
   let status = 200
@@ -18,16 +20,30 @@ export default async function handleRequest(req: Request): Promise<Response> {
       body = { error: 'Variáveis de ambiente ausentes', appointment_id: appointmentId, token, patient_link: patientLink }
     } else {
       const supabase = createClient(supabaseUrl, serviceKey)
-      const { data, error } = await supabase
-        .from('intake_links')
-        .upsert({ appointment_id: appointmentId, token }, { onConflict: 'appointment_id' })
-        .select('token')
-        .single()
-      if (error) {
-        status = 500
-        body = { error: error.message }
-      } else {
-        body.token = data?.token || token
+      const timeout = (ms: number) =>
+        new Promise<never>((_, reject) =>
+          setTimeout(() => reject(new Error('Supabase request timeout')), ms),
+        )
+
+      try {
+        const { data, error } = await Promise.race([
+          supabase
+            .from('intake_links')
+            .upsert({ appointment_id: appointmentId, token }, { onConflict: 'appointment_id' })
+            .select('token')
+            .single(),
+          timeout(10000),
+        ])
+
+        if (error) {
+          status = 500
+          body = { error: error.message }
+        } else {
+          body.token = data?.token || token
+        }
+      } catch (error: any) {
+        status = 504
+        body = { error: error?.message || 'Supabase request timeout' }
       }
     }
   }
