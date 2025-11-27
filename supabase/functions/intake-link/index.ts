@@ -41,7 +41,14 @@ export default async function handleRequest(req: Request): Promise<Response> {
       body = { error: 'Variáveis de ambiente ausentes', appointment_id: appointmentId, token, patient_link: patientLink }
     } else {
       try {
-        const supabase = createClient(supabaseUrl, serviceKey)
+        const fetchWithTimeout = (input: RequestInfo, init: RequestInit = {}) => {
+          const controller = new AbortController()
+          const id = setTimeout(() => controller.abort(), 7000)
+          const headers = new Headers(init.headers || {})
+          const nextInit: RequestInit = { ...init, signal: controller.signal, headers }
+          return fetch(input, nextInit).finally(() => clearTimeout(id))
+        }
+        const supabase = createClient(supabaseUrl, serviceKey, { global: { fetch: fetchWithTimeout } })
         console.log('intake-link upsert begin')
         await withTimeout(
           supabase
