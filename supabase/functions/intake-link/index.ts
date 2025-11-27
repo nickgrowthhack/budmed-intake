@@ -4,7 +4,7 @@ export default async function handleRequest(req: Request): Promise<Response> {
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-    'Access-Control-Allow-Methods': 'GET, OPTIONS'
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
   }
   if (req.method === 'OPTIONS') {
     return new Response('ok', { status: 200, headers: corsHeaders })
@@ -12,6 +12,7 @@ export default async function handleRequest(req: Request): Promise<Response> {
 
   const url = new URL(req.url)
   const appointmentId = url.pathname.split('/').filter(Boolean).pop() ?? ''
+  console.log('intake-link start', { method: req.method, path: url.pathname, appointmentId })
   if (!appointmentId) {
     return new Response(JSON.stringify({ error: 'appointment_id ausente' }), { status: 400, headers: { ...corsHeaders, 'content-type': 'application/json' } })
   }
@@ -41,11 +42,19 @@ export default async function handleRequest(req: Request): Promise<Response> {
     } else {
       try {
         const supabase = createClient(supabaseUrl, serviceKey)
+        console.log('intake-link upsert begin')
+        await withTimeout(
+          supabase
+            .from('intake_links')
+            .upsert({ appointment_id: appointmentId, token }, { onConflict: 'appointment_id' }),
+          7000
+        )
+        console.log('intake-link upsert done, select begin')
         const { data, error } = await withTimeout(
           supabase
             .from('intake_links')
-            .upsert({ appointment_id: appointmentId, token }, { onConflict: 'appointment_id' })
             .select('token')
+            .eq('appointment_id', appointmentId)
             .single(),
           7000
         )
@@ -67,5 +76,6 @@ export default async function handleRequest(req: Request): Promise<Response> {
     }
   }
 
+  console.log('intake-link end', { status })
   return new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, 'content-type': 'application/json' } })
 }
