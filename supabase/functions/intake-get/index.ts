@@ -1,4 +1,4 @@
-import { createClient } from 'supabase';
+import { createClient } from "npm:@supabase/supabase-js@2";
 
 export default async function handleRequest(req: Request): Promise<Response> {
   const url = new URL(req.url)
