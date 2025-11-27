@@ -20,12 +20,10 @@ Deno.serve(async (req) => {
     return new Response(JSON.stringify({ error: 'appointment_id ausente' }), { status: 400, headers: { ...corsHeaders, 'content-type': 'application/json', 'Connection': 'keep-alive' } })
   }
 
-  const token = crypto.randomUUID()
   const base = (typeof Deno !== 'undefined' && Deno.env.get('PUBLIC_INTAKE_BASE_URL')) || 'https://intake.budmed.com.br/patient/'
-  const patientLink = `${base}?token=${token}`
 
   let status = 200
-  let body: any = { appointment_id: appointmentId, token, patient_link: patientLink }
+  let body: any = { appointment_id: appointmentId, token: '', patient_link: '' }
 
   const withTimeout = async <T>(p: Promise<T>, ms: number): Promise<T> => {
     return await Promise.race<T>([
@@ -51,14 +49,26 @@ Deno.serve(async (req) => {
         return fetch(input, nextInit).finally(() => clearTimeout(id))
       }
       const supabase = createClient(supabaseUrl, serviceKey, { global: { fetch: fetchWithTimeout } })
-      console.log('intake-link upsert begin')
-      await withTimeout(
+      const { data: existing } = await withTimeout(
         supabase
           .from('intake_links')
-          .upsert({ appointment_id: appointmentId, token }, { onConflict: 'appointment_id' }),
+          .select('token')
+          .eq('appointment_id', appointmentId)
+          .maybeSingle(),
         7000
       )
-      console.log('intake-link upsert done, select begin')
+      let token = existing?.token
+      if (!token) {
+        token = crypto.randomUUID()
+        console.log('intake-link insert begin')
+        await withTimeout(
+          supabase
+            .from('intake_links')
+            .upsert({ appointment_id: appointmentId, token }, { onConflict: 'appointment_id', ignoreDuplicates: true }),
+          7000
+        )
+      }
+      const patientLink = `${base}?token=${token}`
       const { data, error } = await withTimeout(
         supabase
           .from('intake_links')
@@ -72,6 +82,7 @@ Deno.serve(async (req) => {
         body = { error: error.message }
       } else {
         body.token = data?.token || token
+        body.patient_link = patientLink
       }
     } catch (e: any) {
       if (e && e.message === 'timeout') {
